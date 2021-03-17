@@ -250,4 +250,4 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini
 
 # Get non-open-source specific aspects
-$(call inherit-product-if-exists, vendor/lge/sd4xx-common/sd4xx-common-vendor.mk)
+$(call inherit-product-if-exists, vendor/lge/cv1-common/cv1-common-vendor.mk)
