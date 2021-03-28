@@ -2,7 +2,6 @@
 vendor/lib64/libuiblur.so
 
 # CNE - from santoni (Redmi 4X)
--priv-app/CNEService/CNEService.apk
 bin/cnd
 etc/cne/andsfCne.xml
 etc/cne/SwimConfig.xml
@@ -24,9 +23,6 @@ etc/cne/wqeclient/VZW/VZW_profile6.xml
 etc/permissions/cneapiclient.xml
 etc/permissions/com.quicinc.cne.xml
 etc/permissions/ConnectivityExt.xml
-framework/cneapiclient.jar
-framework/com.quicinc.cne.jar
-framework/ConnectivityExt.jar
 vendor/lib/libcne.so
 vendor/lib/libcneapiclient.so
 vendor/lib/libcneqmiutils.so
@@ -68,9 +64,6 @@ etc/dpm/dpm.conf
 etc/dpm/nsrm/NsrmConfiguration.xml
 etc/permissions/com.qti.dpmframework.xml
 etc/permissions/dpmapi.xml
-framework/com.qti.dpmframework.jar
-framework/dpmapi.jar
-framework/tcmclient.jar
 vendor/lib/libdpmctmgr.so
 vendor/lib/libdpmfdmgr.so
 vendor/lib/libdpmframework.so
@@ -96,13 +89,10 @@ etc/permissions/com.qualcomm.location.xml
 etc/permissions/izat.xt.srv.xml
 etc/cacert_location.pem
 etc/xtra_root_cert.pem
-framework/com.qti.location.sdk.jar
-framework/izat.xt.srv.jar
 -lib64/libloc_api_v02.so
 lib64/libloc_ds_api.so
 -lib/libloc_api_v02.so
 lib/libloc_ds_api.so
--priv-app/com.qualcomm.location/com.qualcomm.location.apk
 vendor/lib/hw/flp.default.so
 vendor/lib/libalarmservice_jni.so
 vendor/lib/libasn1cper.so
@@ -261,7 +251,6 @@ vendor/lib/libwms.so
 vendor/lib64/libwms.so
 
 # Network - from santoni (Redmi 4X)
--priv-app/QtiTetherService/QtiTetherService.apk
 vendor/lib/libconnctrl.so
 vendor/lib/libQtiTether.so
 vendor/lib64/libconnctrl.so
@@ -327,15 +316,6 @@ vendor/lib/libquipc_os_api.so
 vendor/lib/libsmemlog.so
 
 # Radio - from garlic (YUREKA BLACK)
--app/datastatusnotification/datastatusnotification.apk
--app/fastdormancy/fastdormancy.apk
--app/QtiTelephonyService/QtiTelephonyService.apk
--app/shutdownlistener/shutdownlistener.apk
--framework/embmslibrary.jar
--framework/qcrilhook.jar
--framework/qti-telephony-common.jar|37d692fb171d0ee3269676a9e9998d2e3bfd9488
--framework/QtiTelephonyServicelibrary.jar
--priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 bin/netmgrd
 bin/radish
 bin/rmt_storage
@@ -368,7 +348,6 @@ vendor/lib64/libthermalclient.so
 vendor/lib64/libthermalioctl.so
 
 # Time services - from santoni (Redmi 4X)
--app/TimeService/TimeService.apk
 bin/time_daemon
 -vendor/lib/libtime_genoff.so
 vendor/lib/libTimeService.so

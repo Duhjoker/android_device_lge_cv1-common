@@ -62,7 +62,7 @@ BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-linux-androideabi-4.9/bin
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
 TARGET_KERNEL_APPEND_DTB := true
-TARGET_KERNEL_SOURCE := kernel/lge/cv1
+TARGET_KERNEL_SOURCE := kernel/msm-3.18
 
 # Audio
 AUDIO_FEATURE_ENABLED_AAC_ADTS_OFFLOAD := true
