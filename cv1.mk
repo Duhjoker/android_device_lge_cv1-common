@@ -97,9 +97,6 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/data/dsi_config.xml:system/etc/data/dsi_config.xml \
     $(COMMON_PATH)/configs/data/netmgr_config.xml:system/etc/data/netmgr_config.xml
 
-# Gesture handler
-PRODUCT_PACKAGES += \
-    GestureHandler
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -130,14 +127,6 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/gps/etc/lowi.conf:system/etc/lowi.conf \
     $(COMMON_PATH)/gps/etc/sap.conf:system/etc/sap.conf \
     $(COMMON_PATH)/gps/etc/xtwifi.conf:system/etc/xtwifi.conf
-
-# IMS
-PRODUCT_PACKAGES += \
-    libshims_ims
-
-# Gestures package
-PRODUCT_PACKAGES += \
-    DeviceSettings
 
 # Init
 PRODUCT_PACKAGES += \

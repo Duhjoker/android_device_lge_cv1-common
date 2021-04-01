@@ -29,19 +29,6 @@ TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 :=armeabi
 TARGET_CPU_VARIANT := cortex-a53
 
-# TARGET_2ND_ARCH := arm
-# TARGET_2ND_ARCH_VARIANT := armv7-a-neon
-# TARGET_2ND_CPU_ABI := armeabi-v7a
-# TARGET_2ND_CPU_ABI2 := armeabi
-# TARGET_2ND_CPU_VARIANT := cortex-a53
-
-TARGET_CPU_ABI_LIST_64_BIT := $(TARGET_CPU_ABI)
-TARGET_CPU_ABI_LIST_32_BIT := $(TARGET_2ND_CPU_ABI),$(TARGET_2ND_CPU_ABI2)
-TARGET_CPU_ABI_LIST := $(TARGET_CPU_ABI_LIST_64_BIT),$(TARGET_CPU_ABI_LIST_32_BIT)
-
-TARGET_BOARD_SUFFIX := _32
-TARGET_USES_64_BIT_BINDER := true
-
 # Bootanimation
 TARGET_BOOTANIMATION_PRELOAD := true
 TARGET_BOOTANIMATION_TEXTURE_CACHE := true
@@ -51,8 +38,9 @@ TARGET_BOOTLOADER_BOARD_NAME := msm8937
 TARGET_NO_BOOTLOADER := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=tty0,115200,n8 androidboot.console=tty0 user_debug=30 msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 androidboot.hardware=qcom
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := console=tty0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlycon=msm_hsl_uart,0x78B0000
+BOARD_KERNEL_CMDLINE += security=apparmor androidboot.selinux=permissive enforcing=0 apparmor=1 selinux=0
+
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
@@ -117,6 +105,7 @@ USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
 
 # Bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
@@ -126,23 +115,27 @@ QCOM_BT_USE_SMD_TTY := true
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
 
-# Offline Charging
-WITH_CM_CHARGER := true
-BOARD_CHARGER_DISABLE_INIT_BLANK := true
-BOARD_CHARGER_ENABLE_SUSPEND := false
-BACKLIGHT_PATH := "/sys/class/leds/lcd-backlight/brightness"
-BOARD_CHARGING_CMDLINE_NAME := "androidboot.mode"
-BOARD_CHARGING_CMDLINE_VALUE := "chargerlogo"
+# Charging
+BOARD_CHARGER_ENABLE_SUSPEND := true
+BOARD_HEALTHD_CUSTOM_CHARGER_RES := $(PLATFORM_PATH)/charger/images
+BOARD_CHARGER_SHOW_PERCENTAGE := true
+#BOARD_CHARGER_DISABLE_INIT_BLANK := true
 
 # CMHW
 BOARD_USES_CYANOGEN_HARDWARE := true
-#BOARD_HARDWARE_CLASS := device/lge/ph2n/cmhw/
+#BOARD_HARDWARE_CLASS := device/lge/ph2n/cmhw/src
 
 # CNE
 BOARD_USES_QCNE := true
 
 # Dex pre-opt to speed up initial boot
-WITH_DEXPREOPT := true
+ifeq ($(HOST_OS),linux)
+  ifneq ($(TARGET_BUILD_VARIANT),eng)
+    ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT := true
+    endif
+  endif
+endif
 WITH_DEXPREOPT_BOOT_IMG_ONLY ?= true
 
 # Display
@@ -202,6 +195,11 @@ USE_SENSOR_MULTI_HAL := true
 
 # System prop
 TARGET_SYSTEM_PROP := $(COMMON_PATH)/system.prop
+
+# Init
+TARGET_INIT_VENDOR_LIB := libinit_cv1
+TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
+TARGET_RECOVERY_DEVICE_MODULES := libinit_cv1
 
 # Keymaster
 TARGET_PROVIDES_KEYMASTER := true
